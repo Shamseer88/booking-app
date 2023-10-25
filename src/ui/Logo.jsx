@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledLogo = styled.div`
-text-align = center
+  text-align: center;
 `;
 
 const Img = styled.img`
-  height: 5.6rem;
+  height: 5rem;
   width: auto;
 `;
 
