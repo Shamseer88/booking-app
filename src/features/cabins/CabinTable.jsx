@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import styled from "styled-components";
 import { getCabins } from "../../services/apiCabins";
+import CabinRow from "./CabinRow";
 
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);
@@ -13,7 +13,7 @@ const Table = styled.div`
 
 const TableHeader = styled.div`
   display: grid;
-  grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr;
+  grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
   column-gap: 2.4rem;
   align-items: center;
   background-color: var(--color-grey-50);
@@ -31,7 +31,7 @@ export default function CabinTable() {
     data: cabins,
     error,
   } = useQuery({
-    queryKey: ["cabin"],
+    queryKey: ["cabins"],
     queryFn: getCabins,
   });
 
@@ -47,6 +47,9 @@ export default function CabinTable() {
         <div>Discount</div>
         <div></div>
       </TableHeader>
+      {cabins.map((cabin) => (
+        <CabinRow cabin={cabin} key={cabin.id} />
+      ))}
     </Table>
   );
 }
